@@ -1,0 +1,19 @@
+<h1>Home page for Projects</h1>
+
+{% load static %}
+<!-- This links to the blog page -->
+<a href="{% url 'blog:all_blogs' %}">Full Blog</a><p>
+
+<!-- This loops through everything in portfolios [our Table name was Project] -->
+{% for project in projects %}
+	{{ project }}
+<br>
+<table border=1></td></tr>
+<tr><td>ID	</td><td>{{ project.id }}</td></tr>
+<tr><td>Title	</td><td>{{ project.title }}</td></tr>
+<tr><td>Image name	</td><td>{{ project.image }}</td></tr>
+	{% if project.image %}
+	<tr><td>Image </td><td><img src="{{ project.image.url }}" height=100 width=100></td></tr>
+	{% endif %}
+</table>
+{% endfor %}
